@@ -18,7 +18,7 @@ import { AutocompleteGame } from "../../types/games";
 
 export const Games = () => {
 	const [searchValue, setSearchValue] = useState("");
-	const debouncedSearchValue = useDebouncedValue(searchValue, 1000);
+	const debouncedSearchValue = useDebouncedValue(searchValue, 250);
 	const gameResults = useGames({ search: debouncedSearchValue[0] });
 
 	const [name, setName] = useState("");
@@ -61,7 +61,6 @@ export const Games = () => {
 						label="Search game"
 						value={searchValue}
 						filter={() => true}
-						disabled={gameResults.isLoading}
 						data={autocompleteData}
 						onChange={handleChange}
 						onItemSubmit={onItemSubmit}
